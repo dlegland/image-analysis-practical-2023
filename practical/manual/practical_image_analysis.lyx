@@ -1,0 +1,3103 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass scrartcl
+\begin_preamble
+\usepackage[dvipsnames]{xcolor}
+\usepackage[T1]{fontenc}
+
+\usepackage{hyperref}
+
+\definecolor{bl}{rgb}{0.0,0.2,0.6} 
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{lightgray}{rgb}{0.95,0.95,0.95}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+\hypersetup{colorlinks=true, citecolor=blue, linkcolor=blue}
+
+% package that modifies style of section headers
+\addtokomafont{section}{\color{bl}\scshape \selectfont}
+\addtokomafont{subsection}{\color{bl}\scshape \selectfont}
+\addtokomafont{subsubsection}{\color{bl}\scshape \selectfont}
+
+% setup font style for different title elements
+\setkomafont{title}{\color{bl} \bfseries \scshape}
+\setkomafont{author}{\centering \small}
+\setkomafont{date}{\centering \small}
+
+
+% Change the abstract environment
+\usepackage[runin]{abstract}		% runin option for a run-in title
+\setlength\absleftindent{30pt}		% left margin
+\setlength\absrightindent{30pt}		% right margin
+\abslabeldelim{\quad }			
+\setlength{\abstitleskip}{-10pt}
+\renewcommand{\abstractname}{}
+\renewcommand{\abstracttextfont}{\color{bl} \small \slshape }	% slanted text
+
+
+% Custom headers and adapted to KOMA-Script
+\usepackage{scrlayer-scrpage}
+\usepackage{lastpage}	
+
+% header
+\lehead*{\slshape\rightmark}
+\rohead*{\slshape\rightmark}
+
+% footer
+\KOMAoptions{footsepline=on}
+\ofoot{\footnotesize page \thepage\ / \pageref{LastPage}}
+\ifoot{\footnotesize \jobname}
+
+% right section with number
+\renewcommand{\sectionmark}[1]{\markright{\thesection\ #1}}
+
+
+% Added by lyx2lyx
+\usepackage[charter]{mathdesign}
+
+% setup of figure captions 
+\usepackage[format=plain,font=it,labelfont=bf]{caption}
+
+% enhance the typesetting of matlab code
+\usepackage{matlab-prettifier}
+
+
+% some info for populating document title page
+\author{D. Legland}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format pdf2
+\output_sync 0
+\bibtex_command default
+\index_command default
+\float_placement h
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize a4paper
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 2
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 2
+\paperpagestyle default
+\listings_params "language=Java,numbers=left,tabsize=2,frame=single,breaklines=true,basicstyle={\scriptsize\mlttfamily},aboveskip=5pt,showspaces=false"
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Title
+Practical session for 
+\begin_inset Quotes eld
+\end_inset
+
+Advanced Image Analysis
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Abstract
+This document is the guideline for the practical session about 
+\begin_inset Quotes eld
+\end_inset
+
+advanced image analysis
+\begin_inset Quotes erd
+\end_inset
+
+.
+ It is composed of two parts that follow the talk outline.
+ In the first part, it is proposed to investigate errors resulting from
+ image analysis algorithms.
+ The second part is devoted to image texture analysis.
+ Both parts can be treated independenlty.
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset toc
+LatexCommand tableofcontents
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Validation of image analysis 
+\end_layout
+
+\begin_layout Standard
+This practical proposes to investigage errors made by image analysis algorithm,
+ and to compare the behaviour of several algorithms.
+ 
+\end_layout
+
+\begin_layout Subsection
+Requirements
+\end_layout
+
+\begin_layout Standard
+The practical will use the Fiji software.
+ The following plugins are necessary:
+\end_layout
+
+\begin_layout Itemize
+MorphoLibJ (installed by default)
+\end_layout
+
+\begin_layout Itemize
+Digital_Shapes
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+https://github.com/ijtools/ijDigiShapes
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+, a library that allows generating binary images of discretized shapes in
+ 2D and 3D.
+\end_layout
+
+\begin_layout Itemize
+ij_Geometry
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+https://github.com/ijtools/ijGeometry
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+, a geometry processing library for ImageJ, required by Digital_Shapes.
+\end_layout
+
+\begin_layout Standard
+A basic knowledge of ImageJ and of macro will be necessary.
+\end_layout
+
+\begin_layout Subsection
+Comparison of perimeter measures
+\end_layout
+
+\begin_layout Standard
+In this session, we will compare the results of several methods for measuring
+ the perimeter of binary shapes.
+ We will focus on basic shapes with known theoretical values of perimeter
+ to be able to evaluate resulting errors, and compare the results obtained
+ with native ImageJ's 
+\begin_inset Quotes eld
+\end_inset
+
+Analyze Particles
+\begin_inset Quotes erd
+\end_inset
+
+ and the 
+\begin_inset Quotes eld
+\end_inset
+
+Analyze Regions
+\begin_inset Quotes erd
+\end_inset
+
+ from the MorphoLibJ library.
+\end_layout
+
+\begin_layout Standard
+We will evaluate (relative) errors based on the following equation:
+\begin_inset Formula 
+\begin{align}
+\delta_{P}^{\text{method}} & =\frac{P_{\text{method}}-P_{th}}{P_{th}}
+\end{align}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Disk
+\end_layout
+
+\begin_layout Standard
+Let us start with the most simple shape: the disk.
+ The perimeter of a disk with radius 
+\begin_inset Formula $r$
+\end_inset
+
+ is 
+\begin_inset Formula $2\pi r$
+\end_inset
+
+.
+ When using a disk with radius 
+\begin_inset Formula $50$
+\end_inset
+
+ pixels, the expected value of perimeter is around 
+\begin_inset Formula $P_{th}=314.15$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_layout Itemize
+Create a new image, with size 200x200
+\end_layout
+
+\begin_layout Itemize
+Run the Plugins\SpecialChar menuseparator
+Digital Shapes\SpecialChar menuseparator
+Fill Disk 
+\end_layout
+
+\begin_layout Itemize
+Choose a center around 
+\begin_inset Formula $(100,100)$
+\end_inset
+
+, a radius equal to 
+\begin_inset Formula $50$
+\end_inset
+
+, and click 
+\begin_inset Quotes eld
+\end_inset
+
+OK
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Note that you can slightly shift the center to make the disk less 
+\begin_inset Quotes eld
+\end_inset
+
+symetric
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Use for example 
+\begin_inset Formula $(100.23,100.34)$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+You shoud obtain a disk in the middle of your image (Fig.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Discrete-Disk-Examples"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/disk_R20.png
+	width 24text%
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename images/disk_R20_shifted01.png
+	width 24text%
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename images/disk_R20_shifted02.png
+	width 24text%
+
+\end_inset
+
+ 
+\begin_inset Graphics
+	filename images/disk_R20_shifted03.png
+	width 24text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Discrete-Disk-Examples"
+
+\end_inset
+
+Examples of discretized disks with same radius (R=20).
+ The left-most image corresponds to a disk centered with pixel grid.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Minisec
+Result with ImageJ
+\end_layout
+
+\begin_layout Standard
+You can measure perimeter with standard functions of ImageJ via the 
+\begin_inset Quotes eld
+\end_inset
+
+Analyze Particles
+\begin_inset Quotes erd
+\end_inset
+
+ plugin.
+ You may need to set the threshold before (Image\SpecialChar menuseparator
+Adjust\SpecialChar menuseparator
+Threshold..., click 
+\begin_inset Quotes eld
+\end_inset
+
+yes
+\begin_inset Quotes erd
+\end_inset
+
+), and to make sure the perimeter is selected in the list of measures (Analyze\SpecialChar menuseparator
+Se
+t Measurements, select 
+\begin_inset Quotes eld
+\end_inset
+
+Perimeter
+\begin_inset Quotes erd
+\end_inset
+
+).
+ Check the value of perimeter.
+ Evaluate error as
+\begin_inset Formula 
+\begin{align*}
+\delta_{P}^{IJ} & =\frac{P_{IJ}-P_{th}}{P_{th}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Minisec
+Result with MorphoLibJ
+\end_layout
+
+\begin_layout Standard
+Compare the error with that obtained with MorphoLibJ.
+ Use the Plugin 
+\begin_inset Quotes eld
+\end_inset
+
+Plugins\SpecialChar menuseparator
+MorphoLibJ\SpecialChar menuseparator
+Analyze\SpecialChar menuseparator
+Analyze Regions...
+\begin_inset Quotes erd
+\end_inset
+
+, and make sure the option for perimeter is checked.
+ Evaluate error as
+\begin_inset Formula 
+\begin{align*}
+\delta_{P}^{MLJ} & =\frac{P_{MLJ}-P_{th}}{P_{th}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+One should obtain a smaller relative error with MorphoLibJ.
+ Note that relative error depends on shape and on relative position and
+ orientation of shape with respect to discretization grid.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="6">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell multirow="3" alignment="center" valignment="middle" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Shape
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="3" alignment="center" valignment="middle" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $P_{\text{th}}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ImageJ
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+MorphoLibJ
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+P
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\delta_{P}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+P
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\delta_{P}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+disk R=20
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+125.66
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+130.1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3.55%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+125.0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+-0.5%
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+disk R=50
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+314.15
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+329.7
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4.95%
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+314.2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.03%
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Comparison methods"
+
+\end_inset
+
+Sample results that can be obtained for perimeter of a disk.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Comparisons between both methods on a sample image are reported in Table
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Comparison methods"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ Note that the results depends on the position of the center of the shape.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Other shapes
+\end_layout
+
+\begin_layout Standard
+You can repeat the workflow with other shapes: square, ellipses, rotated
+ rectangles...
+ It can be interesting to let vary the different shape parameters, as well
+ as the orientation.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/ellipse_20_10_30.png
+	width 23text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Ellipse, 
+\begin_inset Formula $a=20,b=10$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/square_30_30.png
+	width 23text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+square, 
+\begin_inset Formula $s=30$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/obox_40_20_30.png
+	width 23text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+box, 
+\begin_inset Formula $s_{1}=40,s_{2}=20$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/capsule_30_20_30.png
+	width 23text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+capsule, 
+\begin_inset Formula $l=30,t=20$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Examples of discrete shapes.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Note that the computation of ellipse perimeter requires numerical integration.
+ Expected perimeter values for disks and ellipses with various sizes are
+ given in table
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:Perimeter-Disk-Ellipse"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Float table
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Radius
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Perimeter
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+10
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
+62.83
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+20
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+125.66
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+30
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+188.49
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+40
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+251.33
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+50
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\xout off
+\uuline off
+\uwave off
+\noun off
+\color none
+314.15
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Disks
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float table
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="7" columns="3">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Radius1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Radius 2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Perimeter
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+20
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+10
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset space ~
+\end_inset
+
+96.88
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+30
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+10
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+133.65
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+40
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+20
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+193.77
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+50
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+10
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+210.10
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+50
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+20
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+230.13
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+50
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+30
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+283.62
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Ellipses
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:Perimeter-Disk-Ellipse"
+
+\end_inset
+
+Expected perimeter values for disks and ellipses with various radiusses.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In order to facilitate repetitive runs, a macro can be used.
+ Run 
+\begin_inset Quotes eld
+\end_inset
+
+Plugins New Macro
+\begin_inset Quotes erd
+\end_inset
+
+ to open the macro editor, and choose the language of your choice.
+ The following script
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+https://github.com/dlegland/image-analysis-practical-2023/blob/main/practical/val
+idation/macros/ellipse_perimeter.ijm
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ provides a macro that can be used to run the analysis on an ellipse by
+ randomizing position and orientation.
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+// shape parameters
+\end_layout
+
+\begin_layout Plain Layout
+
+r1 = 40;
+\end_layout
+
+\begin_layout Plain Layout
+
+r2 = 20;
+\end_layout
+
+\begin_layout Plain Layout
+
+perimTh = 193.77;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+// check with fixed orientation
+\end_layout
+
+\begin_layout Plain Layout
+
+imgEllipse = "ellipse40x20";
+\end_layout
+
+\begin_layout Plain Layout
+
+newImage(imgEllipse, "8-bit black", 200, 200, 1);
+\end_layout
+
+\begin_layout Plain Layout
+
+centerX = 100 + random;
+\end_layout
+
+\begin_layout Plain Layout
+
+centerY = 100 + random;
+\end_layout
+
+\begin_layout Plain Layout
+
+theta = random * 180;
+\end_layout
+
+\begin_layout Plain Layout
+
+run("Fill Ellipse", "center_x=&centerX center_y=&centerY major=&r1 minor=&r2
+ orientation=&theta fill=255");
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+// Run analysis with ImageJ
+\end_layout
+
+\begin_layout Plain Layout
+
+setAutoThreshold("Default dark");
+\end_layout
+
+\begin_layout Plain Layout
+
+run("Analyze Particles...", "display clear");
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+// retrieve perimeter and compute error
+\end_layout
+
+\begin_layout Plain Layout
+
+perimIJ = Table.get("Perim.", 0);
+\end_layout
+
+\begin_layout Plain Layout
+
+errorIJ = 100 * (perimIJ - perimTh) / perimTh;
+\end_layout
+
+\begin_layout Plain Layout
+
+print("Relative Error using ImageJ: " + errorIJ + "%");
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+// Run analysis with MorphoLibJ
+\end_layout
+
+\begin_layout Plain Layout
+
+run("Analyze Regions", "area perimeter equivalent_ellipse");
+\end_layout
+
+\begin_layout Plain Layout
+
+selectWindow(imgEllipse + "-Morphometry");
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+// retrieve perimeter and compute error
+\end_layout
+
+\begin_layout Plain Layout
+
+perimMLJ = Table.get("Perimeter", 0);
+\end_layout
+
+\begin_layout Plain Layout
+
+errorMLJ = 100 * (perimMLJ - perimTh) / perimTh;
+\end_layout
+
+\begin_layout Plain Layout
+
+print("Relative Error using MorphoLibJ: " + errorMLJ + "%");
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Average error
+\end_layout
+
+\begin_layout Standard
+It may be interesting to check the variability of the measures around the
+ theoretical values or/and the average values provided by the plugins.
+ For this, we can generate a collection of images representing shapes with
+ same size parameters, but different positions (and orientations if relevant).
+\end_layout
+
+\begin_layout Standard
+The best is to use macro programming.
+ An example is given below
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+https://github.com/dlegland/image-analysis-practical-2023/blob/main/practical/val
+idation/macros/ellipse_perimeter_variability.ijm
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+, for rotated ellipses with semi-axis lengths equal to 40 and 20.
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+// shape parameters
+\end_layout
+
+\begin_layout Plain Layout
+
+r1 = 40;
+\end_layout
+
+\begin_layout Plain Layout
+
+r2 = 20;
+\end_layout
+
+\begin_layout Plain Layout
+
+perimTh = 193.77;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+// the image name
+\end_layout
+
+\begin_layout Plain Layout
+
+imgName = "ellipse40x20";
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+// number of repetitions
+\end_layout
+
+\begin_layout Plain Layout
+
+nRepets = 10;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+// initialize array
+\end_layout
+
+\begin_layout Plain Layout
+
+perimIJArray = newArray(nRepets);
+\end_layout
+
+\begin_layout Plain Layout
+
+perimMLJArray = newArray(nRepets);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+run("Clear Results");
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+for (i=0; i < nRepets; i++) {
+\end_layout
+
+\begin_layout Plain Layout
+
+    // check with fixed orientation
+\end_layout
+
+\begin_layout Plain Layout
+
+    newImage(imgName, "8-bit black", 200, 200, 1);
+\end_layout
+
+\begin_layout Plain Layout
+
+    centerX = 100 + random;
+\end_layout
+
+\begin_layout Plain Layout
+
+    centerY = 100 + random;
+\end_layout
+
+\begin_layout Plain Layout
+
+    ori = random * 180;
+\end_layout
+
+\begin_layout Plain Layout
+
+    run("Fill Ellipse", "center_x=&centerX center_y=&centerY major=&r1 minor=&r2
+ orientation=&ori fill=255");
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    // Run analysis with ImageJ
+\end_layout
+
+\begin_layout Plain Layout
+
+    setAutoThreshold("Default dark");
+\end_layout
+
+\begin_layout Plain Layout
+
+    run("Analyze Particles...", "display");
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    // retrieve perimeter and compute error
+\end_layout
+
+\begin_layout Plain Layout
+
+    selectWindow("Results");
+\end_layout
+
+\begin_layout Plain Layout
+
+    perimIJ = Table.get("Perim.", i);
+\end_layout
+
+\begin_layout Plain Layout
+
+    print(perimIJ);
+\end_layout
+
+\begin_layout Plain Layout
+
+    perimIJArray[i] = perimIJ;
+\end_layout
+
+\begin_layout Plain Layout
+
+    errorIJ = 100 * (perimIJ - perimTh) / perimTh;
+\end_layout
+
+\begin_layout Plain Layout
+
+    print("Relative Error using ImageJ: " + errorIJ + "%");
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    // Run analysis with MorphoLibJ
+\end_layout
+
+\begin_layout Plain Layout
+
+    run("Analyze Regions", "area perimeter");
+\end_layout
+
+\begin_layout Plain Layout
+
+    selectWindow(imgName + "-Morphometry");
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    // retrieve perimeter and compute error
+\end_layout
+
+\begin_layout Plain Layout
+
+    perimMLJ = Table.get("Perimeter", 0);
+\end_layout
+
+\begin_layout Plain Layout
+
+    perimMLJArray[i] = perimMLJ;
+\end_layout
+
+\begin_layout Plain Layout
+
+    errorMLJ = 100 * (perimMLJ - perimTh) / perimTh;
+\end_layout
+
+\begin_layout Plain Layout
+
+    print("Relative Error using MorphoLibJ: " + errorMLJ + "%");
+\end_layout
+
+\begin_layout Plain Layout
+
+    // clean up
+\end_layout
+
+\begin_layout Plain Layout
+
+    close(imgName);
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Array.getStatistics(perimIJArray, min, max, mean, std);
+\end_layout
+
+\begin_layout Plain Layout
+
+print("ImageJ stats");
+\end_layout
+
+\begin_layout Plain Layout
+
+print("   min: "+min);
+\end_layout
+
+\begin_layout Plain Layout
+
+print("   max: "+max);
+\end_layout
+
+\begin_layout Plain Layout
+
+print("   mean: "+mean);
+\end_layout
+
+\begin_layout Plain Layout
+
+print("   std dev: "+std);
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Array.getStatistics(perimMLJArray, min, max, mean, std);
+\end_layout
+
+\begin_layout Plain Layout
+
+print("MorphoLibJ stats");
+\end_layout
+
+\begin_layout Plain Layout
+
+print("   min: "+min);
+\end_layout
+
+\begin_layout Plain Layout
+
+print("   max: "+max);
+\end_layout
+
+\begin_layout Plain Layout
+
+print("   mean: "+mean);
+\end_layout
+
+\begin_layout Plain Layout
+
+print("   std dev: "+std);
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Impact of orientation
+\end_layout
+
+\begin_layout Standard
+Choose an oriented box, with fixed side lengths, and generate discrete versions
+ of the shape with various orientations.
+ 
+\end_layout
+
+\begin_layout Standard
+The best is to create a macro.
+ An example of expected result (for a rotated rectangle / oriented box with
+ side length 150 and 50) is given in Figure
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Impact-of-orientation"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+ The corresponding macro can be found online
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+https://github.com/dlegland/image-analysis-practical-2023/blob/main/practical/val
+idation/macros/rectangle_perimeter_byTheta.ijm
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/perimeter_orientedBox_vs_orientation.png
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Impact-of-orientation"
+
+\end_inset
+
+Impact of orientation for computing perimeter of a rotated rectangle
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+// shape parameters
+\end_layout
+
+\begin_layout Plain Layout
+
+side1 = 150;
+\end_layout
+
+\begin_layout Plain Layout
+
+side2 = 50;
+\end_layout
+
+\begin_layout Plain Layout
+
+perimTh = 400;
+\end_layout
+
+\begin_layout Plain Layout
+
+centerX = 100 + random;
+\end_layout
+
+\begin_layout Plain Layout
+
+centerY = 100 + random;
+\end_layout
+
+\begin_layout Plain Layout
+
+// the image name
+\end_layout
+
+\begin_layout Plain Layout
+
+imgName = "ellipse40x20";
+\end_layout
+
+\begin_layout Plain Layout
+
+// number of repetitions
+\end_layout
+
+\begin_layout Plain Layout
+
+nTheta = 180;
+\end_layout
+
+\begin_layout Plain Layout
+
+// initialize arrays
+\end_layout
+
+\begin_layout Plain Layout
+
+thetaArray = newArray(nTheta);
+\end_layout
+
+\begin_layout Plain Layout
+
+perimIJArray = newArray(nTheta);
+\end_layout
+
+\begin_layout Plain Layout
+
+errorIJArray = newArray(nTheta);
+\end_layout
+
+\begin_layout Plain Layout
+
+perimMLJArray = newArray(nTheta);
+\end_layout
+
+\begin_layout Plain Layout
+
+errorMLJArray = newArray(nTheta);
+\end_layout
+
+\begin_layout Plain Layout
+
+run("Clear Results");
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+for (i=0; i < nTheta; i++) {
+\end_layout
+
+\begin_layout Plain Layout
+
+    // check with fixed orientation
+\end_layout
+
+\begin_layout Plain Layout
+
+    newImage(imgName, "8-bit black", 200, 200, 1);
+\end_layout
+
+\begin_layout Plain Layout
+
+    theta = i;
+\end_layout
+
+\begin_layout Plain Layout
+
+    run("Fill Oriented Box", "center_x=&centerX center_y=&centerY box_length=&si
+de1 box_width=&side2 orientation=&theta fill=255");
+\end_layout
+
+\begin_layout Plain Layout
+
+    thetaArray[i] = theta;
+\end_layout
+
+\begin_layout Plain Layout
+
+    
+\end_layout
+
+\begin_layout Plain Layout
+
+    // Run analysis with ImageJ
+\end_layout
+
+\begin_layout Plain Layout
+
+    setAutoThreshold("Default dark");
+\end_layout
+
+\begin_layout Plain Layout
+
+    run("Analyze Particles...", "display");
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    // retrieve perimeter and compute error
+\end_layout
+
+\begin_layout Plain Layout
+
+    selectWindow("Results");
+\end_layout
+
+\begin_layout Plain Layout
+
+    perimIJ = Table.get("Perim.", i);
+\end_layout
+
+\begin_layout Plain Layout
+
+    print(perimIJ);
+\end_layout
+
+\begin_layout Plain Layout
+
+    perimIJArray[i] = perimIJ;
+\end_layout
+
+\begin_layout Plain Layout
+
+    errorIJ = 100 * (perimIJ - perimTh) / perimTh;
+\end_layout
+
+\begin_layout Plain Layout
+
+    errorIJArray[i] = errorIJ;
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    // Run analysis with MorphoLibJ
+\end_layout
+
+\begin_layout Plain Layout
+
+    run("Analyze Regions", "area perimeter");
+\end_layout
+
+\begin_layout Plain Layout
+
+    selectWindow(imgName + "-Morphometry");
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+    // retrieve perimeter and compute error
+\end_layout
+
+\begin_layout Plain Layout
+
+    perimMLJ = Table.get("Perimeter", 0);
+\end_layout
+
+\begin_layout Plain Layout
+
+    perimMLJArray[i] = perimMLJ;
+\end_layout
+
+\begin_layout Plain Layout
+
+    errorMLJ = 100 * (perimMLJ - perimTh) / perimTh;
+\end_layout
+
+\begin_layout Plain Layout
+
+    errorMLJArray[i] = errorMLJ;
+\end_layout
+
+\begin_layout Plain Layout
+
+    close(imgName);
+\end_layout
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+Plot.create("Variations of Perimeter", "Rectangle Orientation", "Perimeter");
+\end_layout
+
+\begin_layout Plain Layout
+
+Plot.setLimits(0, 180, 370, 435);
+\end_layout
+
+\begin_layout Plain Layout
+
+Plot.setLineWidth(2);
+\end_layout
+
+\begin_layout Plain Layout
+
+Plot.setColor("red");
+\end_layout
+
+\begin_layout Plain Layout
+
+Plot.add("line", thetaArray, perimIJArray);
+\end_layout
+
+\begin_layout Plain Layout
+
+Plot.setColor("blue"); 
+\end_layout
+
+\begin_layout Plain Layout
+
+Plot.setLineWidth(2);
+\end_layout
+
+\begin_layout Plain Layout
+
+Plot.add("line", thetaArray, perimMLJArray);
+\end_layout
+
+\begin_layout Plain Layout
+
+Plot.setLegend("ImageJ
+\backslash
+tMorphoLibJ", "top-right");
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Extension to 3D
+\end_layout
+
+\begin_layout Standard
+The same workflow can be applied to 3D images as well.
+ The 
+\begin_inset Quotes eld
+\end_inset
+
+Digital Shapes
+\begin_inset Quotes erd
+\end_inset
+
+ library provides discretization of various 3D shape models: ellipsoids,
+ cuboids, cylinders, capsules...
+ The computation may be somewhat slower however.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage newpage
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Image texture analysis
+\end_layout
+
+\begin_layout Standard
+This practical session proposes to investigate image texture analysis using
+ gray level granulometry with mathematical morphology filters.
+\end_layout
+
+\begin_layout Subsection
+Requirements
+\end_layout
+
+\begin_layout Standard
+The practical will use the Fiji software.
+ The following plugins are necessary:
+\end_layout
+
+\begin_layout Itemize
+MorphoLibJ (installed by default)
+\end_layout
+
+\begin_layout Itemize
+ijGranulometry
+\begin_inset Foot
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Flex URL
+status open
+
+\begin_layout Plain Layout
+
+https://github.com/ijtools/ijGranulometry
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+ a grayscale granulometry plugin for ImageJ based on MorphoLibJ
+\end_layout
+
+\begin_layout Subsection
+Basic image
+\end_layout
+
+\begin_layout Standard
+This sections presents the basic of granulometry.
+ 
+\end_layout
+
+\begin_layout Standard
+We will start with the image 
+\begin_inset Quotes eld
+\end_inset
+
+coins.png
+\begin_inset Quotes erd
+\end_inset
+
+ (Fig.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Coins-image"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+ This image presents coins with various diameters.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/coins_image.png
+	width 40text%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename images/coins_granuloPlugin.png
+	width 35text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Coins-image"
+
+\end_inset
+
+Test image for granulometry
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Run the plugin 
+\begin_inset Quotes eld
+\end_inset
+
+Granulometry\SpecialChar menuseparator
+Granulomety by Radius...
+\begin_inset Quotes erd
+\end_inset
+
+, fill in the dialog with appropriate settings:
+\end_layout
+
+\begin_layout Itemize
+as the coins are bright over a dark background, choose 
+\begin_inset Quotes eld
+\end_inset
+
+opening
+\begin_inset Quotes erd
+\end_inset
+
+ operation
+\end_layout
+
+\begin_layout Itemize
+use disk structuring element to match the siez of the coins
+\end_layout
+
+\begin_layout Itemize
+choose a max radius larger than that of the coins, say 40 pixels
+\end_layout
+
+\begin_layout Itemize
+for large images, using a step larger than 1 reduces computation time.
+\end_layout
+
+\begin_layout Itemize
+for this image, leave calibration as is.
+\end_layout
+
+\begin_layout Standard
+The resulting granulometry curve is presented on Fig.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Coins-Granulometry"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+.
+ The abscissa presents the diameter of the structuring element (computer
+ as 
+\begin_inset Formula $2\cdot\text{radius}+1$
+\end_inset
+
+).
+ Two peaks can be noticed around 50 and 60 pixels.
+ You may check that this corresponds to the diameter of the coins by using
+ the 
+\begin_inset Quotes eld
+\end_inset
+
+Plot profile
+\begin_inset Quotes erd
+\end_inset
+
+ tool.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/coins_granuloCurves.png
+	width 48text%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename images/coins_volumeCurves.png
+	width 48text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Coins-Granulometry"
+
+\end_inset
+
+Result of granulometry Plugin on coins image.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+If the 
+\begin_inset Quotes eld
+\end_inset
+
+Display Volume Curve
+\begin_inset Quotes erd
+\end_inset
+
+ option was selected, the sum of gray levels for each opening result is
+ also displayed.
+ Two 
+\begin_inset Quotes eld
+\end_inset
+
+shoulders
+\begin_inset Quotes erd
+\end_inset
+
+ may be noticed, that correspond to the diameters when large regions disappear
+ with opening.
+\end_layout
+
+\begin_layout Subsection
+Cellular morphology of plant tissue
+\end_layout
+
+\begin_layout Standard
+We will now investigate cellular morphology of plant tissue based on cross
+ section of maize stems observed with macroscopy imaging.
+ Open one of the images in the 
+\begin_inset Quotes eld
+\end_inset
+
+maize
+\begin_inset Quotes erd
+\end_inset
+
+ directory (Fig.
+\begin_inset space ~
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:Maize-Granulometry"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+).
+ We can observe many polygonal cells, as well as bright structures (vascular
+ bundles).
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/m04d_mid800_sub50.png
+	width 35text%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename images/maize_granuloCurve.png
+	width 60text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Maize-Granulometry"
+
+\end_inset
+
+Application of gray-scale granulometry on an image of plant tissues.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+We run the 
+\begin_inset Quotes eld
+\end_inset
+
+Granulomety by Radius...
+\begin_inset Quotes erd
+\end_inset
+
+ plugin as follow:
+\end_layout
+
+\begin_layout Itemize
+as cells are dark and separated by bright cell walls, we will use the 
+\begin_inset Quotes eld
+\end_inset
+
+closing
+\begin_inset Quotes erd
+\end_inset
+
+ operation
+\end_layout
+
+\begin_layout Itemize
+use disk structuring element
+\end_layout
+
+\begin_layout Itemize
+choose a max radius larger than that of the cells, say 80 pixels
+\end_layout
+
+\begin_layout Itemize
+use a step equal to 1
+\end_layout
+
+\begin_layout Itemize
+leave calibration as is 
+\end_layout
+
+\begin_layout Standard
+The result of granulometry presents a large peak around 30 pixels, corresponding
+ to the typical diameter of cells.
+\end_layout
+
+\begin_layout Subsection
+Anisotropic image
+\end_layout
+
+\begin_layout Standard
+Granulometry may also be used to identify preferred orientations within
+ images.
+ Let us open the image 
+\begin_inset Quotes eld
+\end_inset
+
+f7a1.tif
+\begin_inset Quotes erd
+\end_inset
+
+ image in the tomato directory.
+ The image represents a slice of tomato pericarp, obtained from macroscopy
+ imaging.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/f7a1_small.png
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Tomato-Granulometry"
+
+\end_inset
+
+Sample image of tomato slice.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let us apply granulometry, and compare the results obtained when changing
+ the shape of the structuring elements:
+\end_layout
+
+\begin_layout Itemize
+use the 
+\begin_inset Quotes eld
+\end_inset
+
+Closing
+\begin_inset Quotes erd
+\end_inset
+
+ operation
+\end_layout
+
+\begin_layout Itemize
+repeat the process with each one of the following shapes: 
+\begin_inset Quotes eld
+\end_inset
+
+square
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+horizontal line
+\begin_inset Quotes erd
+\end_inset
+
+, and 
+\begin_inset Quotes eld
+\end_inset
+
+vertical line
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+choose a max radius 
+\begin_inset Quotes eld
+\end_inset
+
+larger enough
+\begin_inset Quotes erd
+\end_inset
+
+, say 80 or 100 pixels
+\end_layout
+
+\begin_layout Itemize
+use a step equal to 1 or larger to reduce computation time.
+\end_layout
+
+\begin_layout Itemize
+leave calibration as is 
+\end_layout
+
+\begin_layout Standard
+The three resulting curves have different shapes.
+ The curve obtained with a square or an horizontal line presents a thinner
+ distribution around 40 pixels.
+ This corresponds to variation around the typical thickness of cells.
+ Using a vertical linear structuring elements results in a thicker bulb,
+ and an shift to the right.
+ This may be interpreted as a larger varaibility in cell sizes in the vertical
+ direction, and as a larger typical size in the vertical direction.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename images/tomato_granuloCurve_ClSq80s2.png
+	width 48text%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename images/tomato_granuloCurve_ClLv80s2.png
+	width 48text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:Tomato-GranulometryCurves"
+
+\end_inset
+
+Granulometry curves on image of tomato tissue using different shapes of
+ structuring elements.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Collection of images
+\end_layout
+
+\begin_layout Standard
+When working with a large number of images, it may be tedious to repeat
+ the process of running the granulometry analysis.
+ One possibility is to run a macro.
+ Another possibility is to run the 
+\begin_inset Quotes eld
+\end_inset
+
+batch Granulometry
+\begin_inset Quotes erd
+\end_inset
+
+ plugin.
+ The plugins allows to select a directory, the granulometry analysis options,
+ and to perform the same analysis on the whole set of images within the
+ directory.
+\end_layout
+
+\end_body
+\end_document
