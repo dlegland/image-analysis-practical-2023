@@ -414,10 +414,6 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename images/disk_R20.png
@@ -2117,10 +2113,6 @@ sideways false
 status open
 
 \begin_layout Plain Layout
-
-\end_layout
-
-\begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename images/perimeter_orientedBox_vs_orientation.png
@@ -2146,10 +2138,6 @@ Impact of orientation for computing perimeter of a rotated rectangle
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -2607,10 +2595,6 @@ Test image for granulometry
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
@@ -2642,7 +2626,7 @@ opening
 \end_layout
 
 \begin_layout Itemize
-use disk structuring element to match the siez of the coins
+use disk structuring element to match the size of the coins
 \end_layout
 
 \begin_layout Itemize
@@ -2838,10 +2822,6 @@ Application of gray-scale granulometry on an image of plant tissues.
 
 \end_layout
 
-\begin_layout Plain Layout
-
-\end_layout
-
 \end_inset
 
 
@@ -3025,7 +3005,7 @@ The three resulting curves have different shapes.
  This corresponds to variation around the typical thickness of cells.
  Using a vertical linear structuring elements results in a thicker bulb,
  and an shift to the right.
- This may be interpreted as a larger varaibility in cell sizes in the vertical
+ This may be interpreted as a larger variability in cell sizes in the vertical
  direction, and as a larger typical size in the vertical direction.
 \end_layout
 
