@@ -1,6 +1,6 @@
 // shape parameters
 sideLength = 100;
-perimTh = 193.77;
+perimTh = 400.0;
 
 // the image name
 imgName = "squareS100";
