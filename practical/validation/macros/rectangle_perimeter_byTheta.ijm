@@ -1,15 +1,20 @@
 // shape parameters
 side1 = 150;
 side2 = 50;
+// theoretical perimeter equals to (150+50)*2
 perimTh = 400;
 centerX = 100 + random;
 centerY = 100 + random;
 
 // the image name
-imgName = "ellipse40x20";
+imgName = "rect_150x50";
 
 // number of repetitions
 nTheta = 180;
+
+// setup features to analyse with plain ImageJ
+run("Set Measurements...", "area perimeter shape redirect=None decimal=3");
+
 
 // initialize array
 thetaArray = newArray(nTheta);
@@ -24,6 +29,7 @@ for (i=0; i < nTheta; i++) {
     // check with fixed orientation
     newImage(imgName, "8-bit black", 200, 200, 1);
     theta = i;
+	// create synthetic image using "DigitalShapes" plugin
     run("Fill Oriented Box", "center_x=&centerX center_y=&centerY box_length=&side1 box_width=&side2 orientation=&theta fill=255");
     thetaArray[i] = theta;
     
